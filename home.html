@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<style>
+    span{
+     padding: 8px;
+     width: 500px;
+     display:inline-block;
+    }
+    span:empty:before {
+    content: attr(placeholder);
+    color: #aaa; 
+    }
+</style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <span id="htmlOrPlainText" contenteditable="true" width="300" placeholder="Type Text here..."></span>
+    </div>
+    <script>
+            $(document).ready(function(){
+                $('#htmlOrPlainText').keypress(function(){
+                let inputHtmlOrText = document.getElementById('htmlOrPlainText');
+                document.getElementById('htmlOrPlainText').innerHTML = inputHtmlOrText.innerText || inputHtmlOrText.textContent || '';
+                // var result = document.getElementById('getOutput').innerHTML;
+                // $("#cursor").insertAtCursor(result);
+            });
+        });
+
+        //     $(document).ready(function(){
+        //     //     $('#htmlOrPlainText').on('paste keydown', function() {
+        //     //     let inputHtmlOrText = document.getElementById('htmlOrPlainText');
+        //         // document.getElementById('htmlOrPlainText').innerHTML = inputHtmlOrText.innerText || inputHtmlOrText.textContent || '';
+        //         // var val = $("#myInput").val();
+        //         // $("#cursor").insertAtCursor(result);
+        //         // var val = inputHtmlOrText.innerText;
+        //         // var regex = /(<([^>]+)>)/ig;
+        //         // var result = val.replace(regex, "");
+        //         // $("#demo").insertAtCursor(result);                   
+        //     // });
+        //     $("#htmlOrPlainText").bind("paste", function(e){
+        //         // access the clipboard using the api
+        //         var pastedData = e.originalEvent.clipboardData.getData('text');
+        //         
+        //     } );
+        // });
+
+    </script>        
+</body>
+</html>

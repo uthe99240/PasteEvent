@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- <script src="jquery.insert-at-cursor.js"></script> -->
+</head>
+<body>
+
+    <div class="target" contenteditable="true">........</div>
+
+    <script>
+        
+        $(document).ready(function(){
+           
+            const target = document.querySelector('div.target');
+
+            target.addEventListener('paste', (event) => {
+                event.preventDefault();
+
+                let paste = (event.clipboardData || window.clipboardData).getData('text');
+                
+                var regex = /(<([^>]+)>)/ig;
+                var result = paste.replace(regex, "");
+
+                const selection = window.getSelection();
+                if (!selection.rangeCount) return;
+                selection.deleteFromDocument();
+                selection.getRangeAt(0).insertNode(document.createTextNode(result));
+                selection.collapseToEnd();
+            });
+        });
+
+      
+        
+    </script>
+    
+</body>
+</html>
